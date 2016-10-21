@@ -4,6 +4,9 @@
 export class Data {
     constructor() {
     }
+
+    //average () {}
+    //min () {}
 }
 export class TimeSeries extends Data {
     constructor(values,labels) {
@@ -24,9 +27,50 @@ export class TimeSeries extends Data {
         return this._labels;
     }
 
-    toString() {
-        return (`(${this.x}, ${this.y}, ${this.z})`);
+    average (){
+
+        //super.average();
+
+        let av = 0;
+        let i = 0;
+
+        for (i; i < this._values.length; i++) {
+
+            av += this._values[i];
+        }
+
+        let res = av/i;
+        res = res.toFixed(2);
+
+        return res;
+
     }
+
+    min () {
+
+        let min = this._values[0];
+
+        for(let i = 1; i < this._values.length; i++) {
+            if(this._values[i]<min)
+                min = this._values[i];
+        }
+
+        return min;
+    }
+
+    max () {
+
+        let max = this._values[0];
+
+        for(let i = 1; i < this._values.length; i++) {
+            if(this._values[i]>max)
+                max = this._values[i];
+        }
+
+        return max;
+    }
+
+    lastDate () {return this._labels[this.labels.length-1]}
 }
 export class Datum extends Data {
     constructor(value) {
@@ -39,17 +83,19 @@ export class Datum extends Data {
     set value(val) {
         this._value = val;
     }
-    toString() {
-        return (`(${this.x}, ${this.y}, ${this.z})`);
-    }
+
+    isOpen () {return this._value==1;}
+
 }
 
 export class Sensor {
 
-    constructor(id,name,data) {
+
+    constructor(id,name,type) {
         this._id = id;
         this._name = name;
-        this._data = data;
+        this._type = type;
+        this._data = new Data();
     }
 
     get id() {
@@ -66,6 +112,13 @@ export class Sensor {
         this._name = nom;
     }
 
+    get type() {
+        return this._type;
+    }
+    set type(t) {
+        this._type = t;
+    }
+
     get data() {
         return this._data;
     }
@@ -77,21 +130,27 @@ export class Sensor {
 
 export class Temperature extends Sensor {
 
-    constructor(id,name,data) {
-        super (id,name,data);
+    constructor(id,name,type) {
+        super (id,name,type);
+
+        this._data = new TimeSeries();
     }
 }
 
 export class Door extends Sensor {
 
-    constructor(id,name,data) {
-        super (id,name,data);
+    constructor(id,name,type) {
+        super (id,name,type);
+
+        this._data = new Datum();
     }
 }
 
 export class FanSpeed extends Sensor {
 
-    constructor(id,name,data) {
-        super (id,name,data);
+    constructor(id,name,type) {
+        super (id,name,type);
+
+        this._data = new TimeSeries();
     }
 }

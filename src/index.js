@@ -39,21 +39,29 @@ export function res () {
     else
       tabObj[3] = new Datum(tabData[0]);
 
+    /*console.log(typeof(tabObj[3]) == 'object');
+    let zob = tabObj[3];
+    console.log(zob.average());*/
+
     switch (tabObj[2]) {
       case SensorType.temp:
-        tabGlob.push(new Temperature(tabObj[0], tabObj[1], tabObj[3]));
+        tabGlob.push(new Temperature(tabObj[0], tabObj[1], tabObj[2], tabObj[3]));
+         Object.assign(tabGlob[i].data, tabObj[3]);
         break;
       case SensorType.door:
-        tabGlob.push(new Door(tabObj[0], tabObj[1], tabObj[3]));
+        tabGlob.push(new Door(tabObj[0], tabObj[1], tabObj[2], tabObj[3]));
+        Object.assign(tabGlob[i].data, tabObj[3]);
         break;
       case SensorType.vent:
-        tabGlob.push(new FanSpeed(tabObj[0], tabObj[1], tabObj[3]));
+        tabGlob.push(new FanSpeed(tabObj[0], tabObj[1], tabObj[2], tabObj[3]));
+        Object.assign(tabGlob[i].data, tabObj[3]);
         break;
       default:
         throw {name: 'SensorType', message: 'Le type transmis n\'est pas reconnu'};
     }
   }
 
+  console.log(typeof(tabGlob[0].data) == 'object')
   return tabGlob;
 
 }
