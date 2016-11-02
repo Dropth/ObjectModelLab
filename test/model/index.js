@@ -5,9 +5,6 @@ import expect from 'expect';
 import { res } from '../../src/index';
 
 let tab = res();
-let tamer = tab[2].data;
-console.log(tamer)
-console.log(tamer.average());
 
 /*for (let i = 0; i < tab.length; i++) {
     console.log(tab[i].name);
