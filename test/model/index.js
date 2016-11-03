@@ -1,14 +1,10 @@
-import expect from 'expect';
+/* Ce fichier contient les test que nous opéront sur nos objets */
 
-// import { ??? } from '../../src/model';
+import expect from 'expect';
 
 import { res } from '../../src/index';
 
 let tab = res();
-
-/*for (let i = 0; i < tab.length; i++) {
-    console.log(tab[i].name);
-}*/
 
 describe('Sensor model tests', () => {
     /* TODO: Ecrire ici la suite de tests pour le modèle objet.*/

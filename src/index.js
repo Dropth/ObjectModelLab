@@ -1,5 +1,5 @@
-// import * as model from './model';
-
+/* Ce fichier contient une fonction qui permet de récupérer les données du fichier
+   sensors_data.js afin d'obtenir les objets que nous voulons */
 
 import  { data }  from '../test/model/sensors_data';
 import  { Temperature }  from './model/index';

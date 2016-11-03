@@ -1,12 +1,8 @@
-/* TODO : Créer le modèle objet ici */
-// import * as model from './model';
+/* Ce fichier contient toutes les classes que nous allons utiliser.*/
 
 export class Data {
     constructor() {
     }
-
-    //average () {}
-    //min () {}
 }
 export class TimeSeries extends Data {
     constructor(values,labels) {
