@@ -1,4 +1,4 @@
-/* Ce fichier contient les test que nous opéront sur nos objets */
+/* Ce fichier contient les tests que nous opéront sur nos objets */
 
 import expect from 'expect';
 
